@@ -1,8 +1,7 @@
 import React, { Component } from "react";
-import { PageHeader, ListGroup } from "react-bootstrap";
-import "./Home.css";
-import { invokeApig } from '../libs/awsLib';
 import { PageHeader, ListGroup, ListGroupItem } from "react-bootstrap";
+import { invokeApig } from '../libs/awsLib';
+import "./Home.css";
 
 export default class Home extends Component {
   constructor(props) {
@@ -33,6 +32,11 @@ export default class Home extends Component {
     return invokeApig({ path: "/notes" });
   }
 
+  handleNoteClick = event => {
+    event.preventDefault();
+    this.props.history.push(event.currentTarget.getAttribute("href"));
+  }
+
   renderNotesList(notes) {
     return [{}].concat(notes).map(
       (note, i) =>
@@ -55,11 +59,6 @@ export default class Home extends Component {
               </h4>
             </ListGroupItem>
     );
-  }
-
-  handleNoteClick = event => {
-    event.preventDefault();
-    this.props.history.push(event.currentTarget.getAttribute("href"));
   }
 
   renderLander() {
