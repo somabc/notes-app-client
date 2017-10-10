@@ -1,5 +1,8 @@
 export default {
   MAX_ATTACHMENT_SIZE: 5000000,
+  s3: {
+  BUCKET: "bryan-notes-serverless"
+},
   apiGateway: {
   URL: "https://3xi2f2sfo4.execute-api.eu-west-2.amazonaws.com/prod",
   REGION: "eu-west-2"
