@@ -93,6 +93,13 @@ export default class Notes extends Component {
     }
   }
 
+  deleteNote() {
+    return invokeApig({
+      path: `/notes/${this.props.match.params.id}`,
+      method: "DELETE"
+    });
+  }
+
   handleDelete = async event => {
     event.preventDefault();
 
@@ -105,6 +112,14 @@ export default class Notes extends Component {
     }
 
     this.setState({ isDeleting: true });
+
+    try {
+      await this.deleteNote();
+      this.props.history.push("/");
+    } catch (e) {
+      alert(e);
+      this.setState({ isDeleting: false });
+    }
   }
 
   render() {
