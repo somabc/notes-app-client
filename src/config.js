@@ -5,7 +5,7 @@ export default {
 },
   apiGateway: {
   URL: "https://3xi2f2sfo4.execute-api.eu-west-2.amazonaws.com/prod",
-  REGION: "eu-west-2"
+  REGION: "eu-west-2",
 },
   cognito: {
     USER_POOL_ID: "eu-west-2_hwTpXir6K",
