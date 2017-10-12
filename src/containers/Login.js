@@ -1,19 +1,20 @@
 import React, { Component } from "react";
-import {FormGroup, FormControl, ControlLabel } from "react-bootstrap";
-import LoaderButton from "../components/LoaderButton";
-import "./Login.css";
-import "../config";
 import {
   CognitoUserPool,
   AuthenticationDetails,
   CognitoUser
 } from "amazon-cognito-identity-js";
+import { FormGroup, FormControl, ControlLabel } from "react-bootstrap";
+import LoaderButton from "../components/LoaderButton";
+import config from "../config";
+import "./Login.css";
 
 export default class Login extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      isLoading: false,
       email: "",
       password: ""
     };
@@ -32,9 +33,9 @@ export default class Login extends Component {
       user.authenticateUser(authenticationDetails, {
         onSuccess: result => resolve(),
         onFailure: err => reject(err)
-        })
-      );
-    }
+      })
+    );
+  }
 
   validateForm() {
     return this.state.email.length > 0 && this.state.password.length > 0;
@@ -59,14 +60,6 @@ export default class Login extends Component {
       this.setState({ isLoading: false });
     }
   }
-
-  try {
-    await this.login(this.state.email, this.state.password);
-    this.props.userHasAuthenticated(true);
-  } catch (e) {
-    alert(e);
-  }
-}
 
   render() {
     return (
@@ -98,8 +91,6 @@ export default class Login extends Component {
             text="Login"
             loadingText="Logging in…"
           />
-            Login
-          </Button>
         </form>
       </div>
     );

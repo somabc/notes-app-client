@@ -1,16 +1,16 @@
 export default {
   MAX_ATTACHMENT_SIZE: 5000000,
   s3: {
-  BUCKET: "bryan-notes-serverless"
-},
+    BUCKET: "notes-app-uploads"
+  },
   apiGateway: {
-  URL: "https://3xi2f2sfo4.execute-api.eu-west-2.amazonaws.com/prod",
-  REGION: "eu-west-2"
-},
+    REGION: "us-east-1",
+    URL: "https://5by75p4gn3.execute-api.us-east-1.amazonaws.com/prod"
+  },
   cognito: {
-    USER_POOL_ID: "eu-west-2_hwTpXir6K",
-    APP_CLIENT_ID: "39ccsoeve71591e9n63k340jq0"
-    REGION: "eu-west-2",
-    IDENTITY_POOL_ID: "eu-west-2:d38f353f-c2c2-4ee8-a5b0-6b83e4613894",
+    REGION: "us-east-1",
+    USER_POOL_ID: "us-east-1_udmFFSb92",
+    APP_CLIENT_ID: "4hmari2sqvskrup67crkqa4rmo",
+    IDENTITY_POOL_ID: "us-east-1:ceef8ccc-0a19-4616-9067-854dc69c2d82"
   }
 };

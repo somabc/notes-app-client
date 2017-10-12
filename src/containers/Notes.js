@@ -35,6 +35,21 @@ export default class Notes extends Component {
     return invokeApig({ path: `/notes/${this.props.match.params.id}` });
   }
 
+  deleteNote() {
+    return invokeApig({
+      path: `/notes/${this.props.match.params.id}`,
+      method: "DELETE"
+    });
+  }
+
+  saveNote(note) {
+    return invokeApig({
+      path: `/notes/${this.props.match.params.id}`,
+      method: "PUT",
+      body: note
+    });
+  }
+
   validateForm() {
     return this.state.content.length > 0;
   }
@@ -53,14 +68,6 @@ export default class Notes extends Component {
 
   handleFileChange = event => {
     this.file = event.target.files[0];
-  }
-
-  saveNote(note) {
-    return invokeApig({
-      path: `/notes/${this.props.match.params.id}`,
-      method: "PUT",
-      body: note
-    });
   }
 
   handleSubmit = async event => {
@@ -91,13 +98,6 @@ export default class Notes extends Component {
       alert(e);
       this.setState({ isLoading: false });
     }
-  }
-
-  deleteNote() {
-    return invokeApig({
-      path: `/notes/${this.props.match.params.id}`,
-      method: "DELETE"
-    });
   }
 
   handleDelete = async event => {
